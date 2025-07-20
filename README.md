@@ -21,7 +21,7 @@
 
 
 
-- 🔭 I’m currently working with [Square1](https://www.square1.io/) as Flutter Developer.
+- 🔭 I’m currently working for my own apps.
 - 🏗 I have contribute to [Flutter](https://github.com/flutter/flutter).
 - 📫 How to reach me: [LinkedIn](https://tr.linkedin.com/in/onat-%C3%A7ipli)
 
