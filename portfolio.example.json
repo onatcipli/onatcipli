@@ -1,0 +1,311 @@
+{
+  "meta": {
+    "title": "John Doe | Mobile App Developer",
+    "description": "Senior iOS & Android developer crafting beautiful, performant mobile experiences. 8+ years of experience, 25+ published apps, 10M+ downloads.",
+    "url": "https://johndoe.dev",
+    "ogImage": "/images/og-image.png",
+    "favicon": "/favicon.ico",
+    "themeColor": "#00d4ff",
+    "googleAnalyticsId": "G-XXXXXXXXXX"
+  },
+
+  "hero": {
+    "greeting": "Hi, I'm",
+    "name": "John Doe",
+    "titles": [
+      "Mobile App Developer",
+      "iOS Engineer",
+      "Flutter Enthusiast",
+      "UI/UX Craftsman"
+    ],
+    "tagline": "I build pixel-perfect, performant mobile apps that users love.",
+    "ctaPrimary": {
+      "text": "View My Work",
+      "href": "#portfolio"
+    },
+    "ctaSecondary": {
+      "text": "Get In Touch",
+      "href": "#contact"
+    }
+  },
+
+  "about": {
+    "avatar": "/images/avatar.webp",
+    "bio": "I'm a passionate mobile developer based in San Francisco, specializing in building exceptional iOS and Android applications.",
+    "bioExtended": "With over 8 years of experience in mobile development, I've had the privilege of working with startups, digital agencies, and large corporations. I focus on creating intuitive, accessible, and performant mobile experiences that delight users and drive business results.\n\nWhen I'm not coding, you'll find me exploring new technologies, contributing to open-source projects, or hiking in the Bay Area.",
+    "location": "San Francisco, CA",
+    "availability": "Open to freelance opportunities",
+    "resumeUrl": "/resume.pdf",
+    "stats": [
+      {
+        "label": "Years Experience",
+        "value": "8+",
+        "icon": "calendar"
+      },
+      {
+        "label": "Apps Published",
+        "value": "25+",
+        "icon": "apps"
+      },
+      {
+        "label": "Total Downloads",
+        "value": "10M+",
+        "icon": "download"
+      },
+      {
+        "label": "Happy Clients",
+        "value": "50+",
+        "icon": "users"
+      }
+    ],
+    "techStack": [
+      {
+        "name": "Swift",
+        "icon": "swift",
+        "color": "#FA7343"
+      },
+      {
+        "name": "SwiftUI",
+        "icon": "swiftui",
+        "color": "#0071E3"
+      },
+      {
+        "name": "Kotlin",
+        "icon": "kotlin",
+        "color": "#7F52FF"
+      },
+      {
+        "name": "Flutter",
+        "icon": "flutter",
+        "color": "#02569B"
+      },
+      {
+        "name": "React Native",
+        "icon": "react",
+        "color": "#61DAFB"
+      },
+      {
+        "name": "Firebase",
+        "icon": "firebase",
+        "color": "#FFCA28"
+      },
+      {
+        "name": "GraphQL",
+        "icon": "graphql",
+        "color": "#E10098"
+      },
+      {
+        "name": "TypeScript",
+        "icon": "typescript",
+        "color": "#3178C6"
+      }
+    ]
+  },
+
+  "apps": [
+    {
+      "appId": "310633997",
+      "platform": "ios",
+      "featured": true,
+      "technologies": ["Swift", "SwiftUI", "Core Data", "CloudKit"],
+      "role": "Lead iOS Developer",
+      "highlights": [
+        "Increased user retention by 40%",
+        "Reduced app crash rate to 0.1%",
+        "Implemented offline-first architecture"
+      ],
+      "customDescription": null
+    },
+    {
+      "appId": "1477376905",
+      "platform": "ios",
+      "featured": true,
+      "technologies": ["Swift", "UIKit", "Combine", "MVVM"],
+      "role": "Senior iOS Developer",
+      "highlights": [
+        "Built real-time collaboration features",
+        "Achieved 4.8 star rating"
+      ]
+    },
+    {
+      "appId": "835599320",
+      "platform": "ios",
+      "featured": false,
+      "technologies": ["Objective-C", "Swift", "Core Animation"],
+      "role": "iOS Developer",
+      "highlights": []
+    },
+    {
+      "appId": "547702041",
+      "platform": "ios",
+      "featured": true,
+      "technologies": ["Swift", "ARKit", "SceneKit", "Metal"],
+      "role": "AR/VR Developer",
+      "highlights": [
+        "Pioneered AR shopping experience",
+        "Featured in App Store"
+      ]
+    }
+  ],
+
+  "experience": [
+    {
+      "company": "TechCorp Inc.",
+      "logo": "/images/companies/techcorp.svg",
+      "role": "Senior iOS Engineer",
+      "type": "Full-time",
+      "duration": {
+        "start": "2022-01",
+        "end": null
+      },
+      "location": "San Francisco, CA",
+      "remote": true,
+      "description": "Leading mobile development for flagship consumer apps with millions of daily active users.",
+      "achievements": [
+        "Led team of 5 engineers in rebuilding core app in SwiftUI",
+        "Reduced app launch time by 60% through performance optimization",
+        "Implemented CI/CD pipeline reducing release time from days to hours",
+        "Mentored junior developers and conducted technical interviews"
+      ],
+      "technologies": ["Swift", "SwiftUI", "Combine", "GraphQL", "Firebase"]
+    },
+    {
+      "company": "StartupXYZ",
+      "logo": "/images/companies/startupxyz.svg",
+      "role": "Mobile Lead",
+      "type": "Full-time",
+      "duration": {
+        "start": "2019-06",
+        "end": "2021-12"
+      },
+      "location": "New York, NY",
+      "remote": false,
+      "description": "Built mobile team from ground up and delivered cross-platform fintech application.",
+      "achievements": [
+        "Grew mobile team from 1 to 8 engineers",
+        "Launched iOS and Android apps simultaneously",
+        "Achieved 4.9 star rating on both app stores",
+        "Processed over $50M in transactions through mobile"
+      ],
+      "technologies": ["React Native", "TypeScript", "Node.js", "PostgreSQL"]
+    },
+    {
+      "company": "Digital Agency Pro",
+      "logo": "/images/companies/agency.svg",
+      "role": "iOS Developer",
+      "type": "Full-time",
+      "duration": {
+        "start": "2017-03",
+        "end": "2019-05"
+      },
+      "location": "Los Angeles, CA",
+      "remote": false,
+      "description": "Developed iOS applications for various clients across different industries.",
+      "achievements": [
+        "Delivered 15+ client projects on time and budget",
+        "Specialized in healthcare and fitness apps",
+        "Built custom UI components library"
+      ],
+      "technologies": ["Swift", "Objective-C", "UIKit", "HealthKit"]
+    }
+  ],
+
+  "testimonials": [
+    {
+      "quote": "John is an exceptional developer who consistently delivers beyond expectations. His attention to detail and user-centric approach made our app a success. I would highly recommend him for any mobile project.",
+      "author": "Sarah Chen",
+      "title": "Product Manager",
+      "company": "TechCorp Inc.",
+      "avatar": "/images/testimonials/sarah.webp",
+      "linkedIn": "https://linkedin.com/in/sarahchen"
+    },
+    {
+      "quote": "Working with John was a game-changer for our startup. He not only built our mobile apps but also helped shape our technical strategy. His expertise in iOS development is truly world-class.",
+      "author": "Michael Rodriguez",
+      "title": "CEO & Co-founder",
+      "company": "StartupXYZ",
+      "avatar": "/images/testimonials/michael.webp",
+      "linkedIn": "https://linkedin.com/in/michaelrodriguez"
+    },
+    {
+      "quote": "John's ability to translate complex requirements into elegant mobile solutions is remarkable. He's a true professional who communicates clearly and delivers quality work consistently.",
+      "author": "Emily Watson",
+      "title": "Creative Director",
+      "company": "Digital Agency Pro",
+      "avatar": "/images/testimonials/emily.webp",
+      "linkedIn": "https://linkedin.com/in/emilywatson"
+    },
+    {
+      "quote": "I've worked with many developers, but John stands out for his deep understanding of mobile UX and his commitment to writing clean, maintainable code. An absolute pleasure to collaborate with.",
+      "author": "David Park",
+      "title": "Engineering Manager",
+      "company": "Google",
+      "avatar": "/images/testimonials/david.webp",
+      "linkedIn": "https://linkedin.com/in/davidpark"
+    }
+  ],
+
+  "skills": {
+    "languages": [
+      { "name": "Swift", "level": 95, "years": 7 },
+      { "name": "Kotlin", "level": 85, "years": 4 },
+      { "name": "TypeScript", "level": 90, "years": 5 },
+      { "name": "Dart", "level": 80, "years": 3 },
+      { "name": "Objective-C", "level": 75, "years": 6 }
+    ],
+    "frameworks": [
+      { "name": "SwiftUI", "level": 95, "years": 4 },
+      { "name": "UIKit", "level": 95, "years": 7 },
+      { "name": "Flutter", "level": 85, "years": 3 },
+      { "name": "React Native", "level": 80, "years": 4 },
+      { "name": "Jetpack Compose", "level": 75, "years": 2 }
+    ],
+    "tools": [
+      { "name": "Xcode", "level": 95 },
+      { "name": "Android Studio", "level": 85 },
+      { "name": "Git", "level": 95 },
+      { "name": "Figma", "level": 80 },
+      { "name": "Firebase", "level": 90 },
+      { "name": "CI/CD", "level": 85 }
+    ],
+    "concepts": [
+      "MVVM Architecture",
+      "Clean Architecture",
+      "Test-Driven Development",
+      "Agile/Scrum",
+      "Code Review",
+      "Performance Optimization",
+      "Accessibility",
+      "App Store Optimization"
+    ]
+  },
+
+  "contact": {
+    "email": "hello@johndoe.dev",
+    "phone": "+1 (555) 123-4567",
+    "calendlyUrl": "https://calendly.com/johndoe",
+    "formEndpoint": "https://formspree.io/f/xxxxxxxx",
+    "socials": {
+      "github": "https://github.com/johndoe",
+      "linkedin": "https://linkedin.com/in/johndoe",
+      "twitter": "https://twitter.com/johndoe",
+      "dribbble": "https://dribbble.com/johndoe",
+      "medium": "https://medium.com/@johndoe"
+    },
+    "cta": {
+      "title": "Let's Build Something Amazing",
+      "description": "I'm currently available for freelance work and full-time opportunities. If you have a project in mind or just want to chat, feel free to reach out!"
+    }
+  },
+
+  "footer": {
+    "copyright": "John Doe",
+    "builtWith": "Built with Next.js, Tailwind CSS & Framer Motion",
+    "quickLinks": [
+      { "label": "Home", "href": "#" },
+      { "label": "About", "href": "#about" },
+      { "label": "Portfolio", "href": "#portfolio" },
+      { "label": "Contact", "href": "#contact" }
+    ]
+  }
+}
