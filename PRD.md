@@ -530,47 +530,198 @@ portfolio/
 
 ## 9. Apple App Store Integration
 
-### 9.1 iTunes Lookup API
+Apple provides two main methods for fetching app data programmatically:
+
+### 9.1 iTunes Lookup API (Primary Method for Specific Apps)
+
+The iTunes Lookup API is the best method for fetching details of **specific apps by ID** - perfect for portfolio websites.
 
 **Endpoint:**
 ```
 GET https://itunes.apple.com/lookup?id={APP_ID}&country={COUNTRY_CODE}
 ```
 
-**Example Response:**
+**Parameters:**
+| Parameter | Description | Example |
+|-----------|-------------|---------|
+| `id` | iTunes App ID (from App Store URL) | `310633997` |
+| `country` | Country code for store region | `us`, `gb`, `de` |
+| `bundleId` | Alternative to ID lookup | `com.company.appname` |
+
+**How to Find App ID:**
+From App Store URL `https://apps.apple.com/us/app/whatsapp/id310633997`, the ID is `310633997`
+
+**Complete Response Fields:**
 ```json
 {
   "resultCount": 1,
   "results": [{
-    "trackId": 123456789,
-    "trackName": "App Name",
-    "description": "App description...",
+    // Basic Info
+    "trackId": 310633997,
+    "trackName": "WhatsApp Messenger",
+    "bundleId": "net.whatsapp.WhatsApp",
+    "version": "24.20.78",
+    "description": "Full app description...",
+
+    // Artwork & Screenshots
+    "artworkUrl60": "https://...",
+    "artworkUrl100": "https://...",
     "artworkUrl512": "https://...",
     "screenshotUrls": ["https://..."],
-    "averageUserRating": 4.5,
-    "userRatingCount": 1000,
+    "ipadScreenshotUrls": ["https://..."],
+    "appletvScreenshotUrls": ["https://..."],
+
+    // Ratings & Reviews
+    "averageUserRating": 4.7,
+    "averageUserRatingForCurrentVersion": 4.6,
+    "userRatingCount": 15000000,
+    "userRatingCountForCurrentVersion": 50000,
+
+    // Pricing
     "price": 0,
     "formattedPrice": "Free",
-    "primaryGenreName": "Productivity",
-    "trackViewUrl": "https://apps.apple.com/..."
+    "currency": "USD",
+
+    // Categories & Genres
+    "primaryGenreName": "Social Networking",
+    "primaryGenreId": 6005,
+    "genres": ["Social Networking", "Utilities"],
+    "genreIds": ["6005", "6002"],
+
+    // Developer Info
+    "artistId": 310633997,
+    "artistName": "WhatsApp Inc.",
+    "artistViewUrl": "https://apps.apple.com/...",
+    "sellerName": "WhatsApp Inc.",
+    "sellerUrl": "https://www.whatsapp.com",
+
+    // Technical Details
+    "minimumOsVersion": "12.0",
+    "supportedDevices": ["iPhone", "iPad", "iPod"],
+    "fileSizeBytes": "123456789",
+    "languageCodesISO2A": ["EN", "ES", "FR"],
+    "features": ["iosUniversal"],
+    "isGameCenterEnabled": false,
+
+    // Content Rating
+    "contentAdvisoryRating": "12+",
+    "trackContentRating": "12+",
+    "advisories": ["Infrequent/Mild..."],
+
+    // Dates
+    "releaseDate": "2009-05-04T07:00:00Z",
+    "currentVersionReleaseDate": "2024-10-15T07:00:00Z",
+    "releaseNotes": "Bug fixes and improvements...",
+
+    // Links
+    "trackViewUrl": "https://apps.apple.com/us/app/whatsapp/id310633997",
+
+    // Metadata
+    "kind": "software",
+    "wrapperType": "software"
   }]
 }
 ```
 
-### 9.2 Implementation Strategy
+### 9.2 Apple RSS Feeds (For Charts & Discovery)
 
-1. At build time, fetch app data for all app IDs
-2. Cache responses in JSON files
-3. Merge with custom portfolio data (technologies, role, etc.)
-4. Generate static pages with complete app info
-5. Optional: Client-side refresh for live ratings
+Apple also provides RSS feeds for app charts via the Marketing Tools:
 
-### 9.3 Fallback Strategy
+**New v2 Endpoint (Current):**
+```
+https://rss.applemarketingtools.com/api/v2/{country}/apps/{feed-type}/{limit}/apps.json
+```
+
+**Feed Types Available:**
+- `top-free` - Top Free Apps
+- `top-paid` - Top Paid Apps
+- `top-grossing` - Top Grossing Apps
+- `new-apps-we-love` - Featured New Apps
+- `new-games-we-love` - Featured New Games
+
+**Example:**
+```
+https://rss.applemarketingtools.com/api/v2/us/apps/top-free/25/apps.json
+```
+
+**Legacy Endpoints (May Still Work):**
+```
+https://itunes.apple.com/us/rss/toppaidapplications/limit=100/genre=6014/json
+https://itunes.apple.com/us/rss/topfreeapplications/limit=100/json
+```
+
+**RSS Feed Generator Tool:**
+Visit https://rss.applemarketingtools.com/ to generate custom feed URLs via UI.
+
+### 9.3 Customer Reviews RSS
+
+To fetch app reviews:
+```
+https://itunes.apple.com/{country}/rss/customerreviews/page=1/id={APP_ID}/sortby=mostrecent/json
+```
+
+**Example:**
+```
+https://itunes.apple.com/us/rss/customerreviews/page=1/id=310633997/sortby=mostrecent/json
+```
+
+### 9.4 Implementation Strategy
+
+**Build-Time Data Fetching:**
+```typescript
+// lib/appStore.ts
+interface AppStoreApp {
+  trackId: number;
+  trackName: string;
+  artworkUrl512: string;
+  screenshotUrls: string[];
+  averageUserRating: number;
+  // ... other fields
+}
+
+async function fetchAppData(appId: string, country = 'us'): Promise<AppStoreApp | null> {
+  try {
+    const response = await fetch(
+      `https://itunes.apple.com/lookup?id=${appId}&country=${country}`
+    );
+    const data = await response.json();
+
+    if (data.resultCount === 0) {
+      return null;
+    }
+
+    return data.results[0];
+  } catch (error) {
+    console.error(`Failed to fetch app ${appId}:`, error);
+    return null;
+  }
+}
+```
+
+**Data Merging Strategy:**
+1. Read app IDs from `portfolio.json`
+2. Fetch live data from iTunes API at build time
+3. Merge with custom portfolio data (technologies, role, achievements)
+4. Generate static pages with combined data
+5. Cache responses to avoid rate limiting (20 requests/minute limit)
+
+### 9.5 Fallback Strategy
 
 If API fails or app is unavailable:
-1. Use cached data if available
-2. Use manually provided data from JSON
-3. Display placeholder with "Details unavailable"
+1. **Primary**: Use cached data from previous successful build
+2. **Secondary**: Use manually provided override data from JSON
+3. **Tertiary**: Display placeholder card with "Details unavailable"
+
+### 9.6 Rate Limiting & CORS
+
+**Rate Limits:**
+- iTunes Search API: ~20 requests/minute
+- For heavy usage: Consider Apple's Enterprise Partner Feed (EPF)
+
+**CORS Note:**
+- The iTunes API has CORS restrictions for browser-side requests
+- **Solution**: Fetch data at build time (SSG) or use API routes (SSR)
+- Next.js static generation solves this perfectly
 
 ---
 
